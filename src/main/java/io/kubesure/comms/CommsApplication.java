@@ -1,17 +1,17 @@
-package com.github.kubesure.comms;
+package io.kubesure.comms;
+
+import java.util.logging.Logger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.apache.log4j.Logger;
 
 @SpringBootApplication
 public class CommsApplication {
 
-	//static Logger log = Logger.getLogger(CommsApplication.class.getName());
+	static Logger logger = Logger.getLogger(CommsApplication.class.getName());
 
 	public static void main(String[] args) {
-		//log.info("comms listener");
-		System.out.println("comms server started");
+		logger.info("comms listener started");
 		SpringApplication.run(CommsApplication.class, args);
 	}
 }
