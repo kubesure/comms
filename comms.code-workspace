@@ -5,6 +5,8 @@
 		}
 	],
 	"settings": {
-		"java.configuration.updateBuildConfiguration": "disabled"
+		"java.configuration.updateBuildConfiguration": "disabled",
+		"java.dependency.packagePresentation": "flat",
+		"java.dependency.syncWithFolderExplorer": false
 	}
 }

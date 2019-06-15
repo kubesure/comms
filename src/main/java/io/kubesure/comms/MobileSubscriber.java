@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class MobileSubscriber {
 
-    static Logger logger = Logger.getLogger(CommsApplication.class.getName());
+    static Logger logger = Logger.getLogger(MobileSubscriber.class.getName());
 
     @KafkaListener(topics="policyissued", groupId = "1")
     public void processMessage(String message) {
-        logger.info("Sending message to mobile" + message);
+        logger.info("Sending push msg to mobile" + message);
     }
 }

@@ -12,6 +12,6 @@ public class CommsApplication {
 
 	public static void main(String[] args) {
 		logger.info("comms listener started");
-		SpringApplication.run(CommsApplication.class, args);
+		SpringApplication.run(CommsApplication.class, args);		
 	}
 }
