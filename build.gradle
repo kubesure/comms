@@ -1,11 +1,12 @@
 plugins {
 	id 'org.springframework.boot' version '2.1.3.RELEASE'
 	id 'java'
+        id "com.palantir.docker" version "0.22.1" 
 }
 
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.github.kubesure.comms'
+group = 'comms'
 version = '0.2'
 sourceCompatibility = '1.8'
 
@@ -19,10 +20,20 @@ dependencies {
 	implementation 'software.amazon.awssdk:bom:2.5.29'
 	compile group: 'com.amazonaws', name: 'aws-java-sdk-sns', version: '1.11.571'	
 	compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.572'
-	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
 	implementation 'org.springframework.boot:spring-boot-starter-web'	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	//compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.14.2'
-	//compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.3'
 }
+
+task unpack(type: Copy) {
+    dependsOn bootJar
+    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+    into("build/dependency")
+}
+docker {
+    copySpec.from(tasks.unpack.outputs).into("dependency")
+    buildArgs(['DEPENDENCY': "dependency"])
+    name 'comms'
+    tags 'v0.2'
+}	
+
