@@ -5,14 +5,12 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
-
 group = 'com.github.kubesure.comms'
-version = '0.0.1-SNAPSHOT'
+version = '0.2'
 sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
-	
 }
 
 dependencies {
