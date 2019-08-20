@@ -12,12 +12,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.PropertySource;
 
 @Component
+@PropertySource("classpath:application.properties")
 public class AWSCommsHealthCheck implements HealthIndicator {
 
     static Logger logger = Logger.getLogger(AWSCommsHealthCheck.class.getName());
-
     @Value("${ping.bucket}")
     private String bucketName;
     @Value("${ping.key}")
@@ -25,7 +26,6 @@ public class AWSCommsHealthCheck implements HealthIndicator {
 
     @Override
     public Health health() {
-        
         logger.info("bucketName.." + bucketName);
         logger.info("objectName.." + objectName);
 
@@ -36,6 +36,7 @@ public class AWSCommsHealthCheck implements HealthIndicator {
                 return Health.up().build();
             }
         } catch (Exception e) {
+            logger.info(e.toString());
             return Health.down().build();
         }
         return null;
