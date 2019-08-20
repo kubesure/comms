@@ -25,7 +25,6 @@ public class AWSCommsHealthCheck implements HealthIndicator {
 
     @Override
     public Health health() {
-        
         logger.info("bucketName.." + bucketName);
         logger.info("objectName.." + objectName);
 
@@ -36,6 +35,7 @@ public class AWSCommsHealthCheck implements HealthIndicator {
                 return Health.up().build();
             }
         } catch (Exception e) {
+            logger.info(e.toString());
             return Health.down().build();
         }
         return null;
