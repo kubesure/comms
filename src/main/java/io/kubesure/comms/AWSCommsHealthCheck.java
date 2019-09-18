@@ -14,6 +14,10 @@ import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 import org.springframework.context.annotation.PropertySource;
 
+/*
+*AWSCommsHealthCheck is a k8s readiness probe api implemented by Spring boot acutator api to check
+*if service is able to connect to and read S3 bucket key. 
+*/
 @Component
 @PropertySource("classpath:application.properties")
 public class AWSCommsHealthCheck implements HealthIndicator {

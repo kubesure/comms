@@ -5,7 +5,9 @@ import java.util.logging.Logger;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-
+/*
+ * Listens to policy issued events to send push notification to the policy holder. 
+ */
 @Component
 public class MobileSubscriber {
 

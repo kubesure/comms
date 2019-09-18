@@ -5,6 +5,10 @@ import java.util.logging.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/*
+ * Start the comms app. Comms app has various event listeners to business events occuring in kubesure.
+ */
+
 @SpringBootApplication
 public class CommsApplication {
 
