@@ -11,7 +11,7 @@ DTAG= $(DOCKER) tag
 DPUSH= $(DOCKER) push
 
 BINARY_NAME=comms
-BINARY_VERSION=v0.2
+BINARY_VERSION=$(shell git rev-parse HEAD)
 BINARY_UNIX=$(BINARY_NAME)
 TAG_LOCAL = $(BINARY_NAME):$(BINARY_VERSION)
 TAG_HUB = bikertales/$(BINARY_NAME):$(BINARY_VERSION)
@@ -25,8 +25,8 @@ build:
 	gradle build -x test
 
 .PHONY: run # - Runs the service without build
-run:
-	java -jar.\build\libs\comms-0.2.jar
+run: build
+	java -jar ./build/libs/comms-${BINARY_VERSION}.jar
 
 .PHONY: dbuild  # - Builds docker image
 dbuild: build
